@@ -1,0 +1,14 @@
+.react-calendar {
+  border: none;
+}
+
+.react-calendar__tile--now,
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: none;
+}
+
+.react-calendar__tile--active{
+    background: #006edc !important;
+
+}
