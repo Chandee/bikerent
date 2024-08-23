@@ -23,6 +23,7 @@ import BookingOverview from 'components/BookingOverview'
 import { finished } from 'stream'
 import { useState } from 'react'
 import FinishFeedback from 'components/FinishFeedback'
+import ModalBooking from 'components/ModalBooking'
 
 interface BikeDetailsProps {
   bike?: Bike
@@ -122,6 +123,7 @@ const BikeDetails = ({ bike, finished, setFinished }: BikeDetailsProps) => {
             <BookingOverview setFinished={setFinished} bikeId={bike?.id} />
           )}
         </OverviewContainer>
+        <ModalBooking bike={bike}/>
       </Content>
     </div>
   )

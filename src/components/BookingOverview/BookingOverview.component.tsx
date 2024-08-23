@@ -1,5 +1,11 @@
 import { Alert, Box, Divider, Typography } from '@mui/material'
-import { BookingButton, CustomAlert, InfoIcon, OverviewContainer, PriceRow } from './BookingOverview.styles'
+import {
+  BookingButton,
+  ContainerDate,
+  CustomAlert,
+  InfoIcon,
+  PriceRow,
+} from './BookingOverview.styles'
 import DatePickerBike from 'components/DatePickerBike'
 
 interface BookingOverviewProps {
@@ -35,14 +41,20 @@ const BookingOverview = ({
 }: BookingOverviewProps) => {
   return (
     <>
-      <DatePickerBike
-        setSelectedDate={setSelectedDate}
-        value={selectedDate}
-        bikeId={bikeId || 0}
-        setPrices={setPrices}
-        setError={setError}
-      />
-      <Typography variant='h2' fontSize={16} marginBottom={1.25}>
+      <ContainerDate>
+        <Typography variant='h2' fontSize={18} marginBottom={1.25}>
+          Select a date and time
+        </Typography>
+        <DatePickerBike
+          setSelectedDate={setSelectedDate}
+          value={selectedDate}
+          bikeId={bikeId || 0}
+          setPrices={setPrices}
+          setError={setError}
+        />
+      </ContainerDate>
+
+      <Typography variant='h2' marginTop={2} fontSize={16} marginBottom={1.25}>
         Booking Overview
       </Typography>
 

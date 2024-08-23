@@ -1,8 +1,4 @@
-import { Box, Divider, Typography } from '@mui/material'
-import { BookingButton, InfoIcon, OverviewContainer, PriceRow } from './BookingOverview.styles'
-import DatePickerBike from 'components/DatePickerBike'
 import { useState } from 'react'
-import { PricesProps } from 'components/DatePickerBike/DatePickerBike.utils'
 import BookingOverview from './BookingOverview.component'
 import { addBooking } from './BookingOVerview.utilts'
 import dayjs from 'dayjs'
@@ -35,6 +31,8 @@ const BookingOverviewContainer = ({ bikeId, setFinished }: BookingOverviewProps)
     })
     setFinished(true)
   }
+
+  
 
   return (
     <>
