@@ -5,23 +5,18 @@ import BikeType from 'components/BikeType'
 import BookingAddressMap from 'components/BookingAddressMap'
 import Header from 'components/Header'
 import Bike from 'models/Bike'
-import { getServicesFee } from './BikeDetails.utils'
 import {
-  BookingButton,
   BreadcrumbContainer,
   BreadcrumbHome,
   BreadcrumbSeparator,
   Content,
   DetailsContainer,
   FavoriteIcon,
-  InfoIcon,
   LikeButton,
   OverviewContainer,
   PriceRow,
 } from './BikeDetails.styles'
 import BookingOverview from 'components/BookingOverview'
-import { finished } from 'stream'
-import { useState } from 'react'
 import FinishFeedback from 'components/FinishFeedback'
 import ModalBooking from 'components/ModalBooking'
 
@@ -35,8 +30,6 @@ const BikeDetails = ({ bike, finished, setFinished }: BikeDetailsProps) => {
   const rateByDay = bike?.rate || 0
   const rateByWeek = rateByDay * 7
 
-  const servicesFee = getServicesFee(rateByDay)
-  const total = rateByDay + servicesFee
   return (
     <div data-testid='bike-details-page'>
       <Header />

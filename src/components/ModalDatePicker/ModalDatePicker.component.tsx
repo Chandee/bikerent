@@ -1,14 +1,9 @@
-import { Box, Divider, IconButton, Typography } from '@mui/material'
-import BikeType from 'components/BikeType'
-import BikePlaceholder from 'assets/bike-placeholder.png'
+import { Box, Divider, Typography } from '@mui/material'
 import Bike from 'models/Bike'
 import {
-  Container,
-  BoxFooterMobile,
   ButtonMobile,
   CalendarIcon,
   BoxContainerHeader,
-  ContainerBackground,
   ContainerBox,
   PriceRow,
   InfoIcon,
@@ -16,14 +11,11 @@ import {
   ArrowLeft,
   CustomAlert,
 } from './ModalDatePicker.styles'
-import Calendar from 'react-calendar'
 import DatePickerBike from 'components/DatePickerBike'
 import dayjs from 'dayjs'
 import { LikeButton } from 'pages/BikeDetails/BikeDetails.styles'
 import { Value } from 'components/DatePickerBike/DatePickerBike.component'
 import { AllFess } from 'components/BookingOverview/BookingOverview.component'
-
-type JustDisplayedBikeData = Omit<Bike, 'candidateId' | 'maxLoad' | 'ratings'>
 
 interface ModalDatePickerProps {
   bike?: Bike

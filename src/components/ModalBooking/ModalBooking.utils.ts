@@ -7,7 +7,7 @@ export interface PricesProps {
   dateTo: string
 }
 
-export const addBooking = async ({ bikeId, dateFrom, dateTo }: PricesProps): Promise<any> => {
+export const addBooking = async ({ bikeId, dateFrom, dateTo }: PricesProps): Promise<AllFess> => {
   const response = await apiClient.post('/bikes/rent', {
     bikeId: bikeId,
     userId: 821,

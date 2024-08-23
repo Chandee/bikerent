@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 import { ChevronLeftOutlined } from '@mui/icons-material'
 
-export const Container = styled(Box)<BoxProps>(({ theme }) => ({
+export const Container = styled(Box)<BoxProps>(() => ({
   position: 'fixed',
   height: '90%',
   width: '100%',
@@ -25,7 +25,7 @@ export const Container = styled(Box)<BoxProps>(({ theme }) => ({
   overflow: 'auto',
 }))
 
-export const ContainerBackground = styled(Box)<BoxProps>(({ theme }) => ({
+export const ContainerBackground = styled(Box)<BoxProps>(() => ({
   position: 'fixed',
   height: '100%',
   width: '100%',
@@ -33,14 +33,14 @@ export const ContainerBackground = styled(Box)<BoxProps>(({ theme }) => ({
   bottom: 0,
 }))
 
-export const ContainerFinishFeedback = styled(Box)<BoxProps>(({ theme }) => ({
+export const ContainerFinishFeedback = styled(Box)<BoxProps>(() => ({
   position: 'fixed',
   height: '100%',
   width: '100%',
   backgroundColor: 'rgba(0, 0, 0, 0.8)',
   bottom: 0,
   right: 0,
-  alignContent: 'center'
+  alignContent: 'center',
 }))
 
 export const ButtonMobile = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -86,7 +86,7 @@ export const ArrowLeft = styled(ChevronLeftOutlined)(({ theme }) => ({
   fontWeight: 300,
 }))
 
-export const BoxContainerHeader = styled(Box)<BoxProps>(({ theme }) => ({
+export const BoxContainerHeader = styled(Box)<BoxProps>(() => ({
   display: 'flex',
   alignItems: 'center',
   width: '100%',

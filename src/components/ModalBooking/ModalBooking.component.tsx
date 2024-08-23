@@ -1,6 +1,6 @@
-import { Box, Divider, IconButton, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import BikeType from 'components/BikeType'
-import BikePlaceholder from 'assets/bike-placeholder.png'
+
 import Bike from 'models/Bike'
 import {
   Container,
@@ -11,10 +11,8 @@ import {
   BoxContainerHeader,
   ContainerBackground,
   ContainerBox,
-  TitleTypo,
   BikeImage,
   NameBox,
-  FinishButton,
   ContainerBikeData,
   PriceTypo,
   ButtonAction,

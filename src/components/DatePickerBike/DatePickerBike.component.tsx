@@ -1,14 +1,9 @@
-import { Box, Divider, Typography } from '@mui/material'
-// import { BookingButton, InfoIcon, OverviewContainer, PriceRow } from './BookingOverview.styles'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import './DatePickerBike.css'
-
-import { useState } from 'react'
 import dayjs from 'dayjs'
 import { getPrices } from './DatePickerBike.utils'
 import { AllFess } from 'components/BookingOverview/BookingOverview.component'
-import FinishFeedback from 'components/FinishFeedback/FinishFeedback.component'
 
 interface DatePickerBikeProps {
   setSelectedDate: (value: Value) => void
@@ -30,6 +25,7 @@ const DatePickerBike = ({
   setError,
   apiOnChange = true,
 }: DatePickerBikeProps) => {
+  
   const onChange = (value: any) => {
     if (apiOnChange && setPrices && setError) {
       getPrices({
