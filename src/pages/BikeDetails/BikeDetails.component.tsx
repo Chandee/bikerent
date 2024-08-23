@@ -22,7 +22,7 @@ import {
 import BookingOverview from 'components/BookingOverview'
 import { finished } from 'stream'
 import { useState } from 'react'
-import FinishFeedback from 'components/FinishFeedback/FinishFeedback.component'
+import FinishFeedback from 'components/FinishFeedback'
 
 interface BikeDetailsProps {
   bike?: Bike
@@ -117,7 +117,7 @@ const BikeDetails = ({ bike, finished, setFinished }: BikeDetailsProps) => {
 
         <OverviewContainer variant='outlined' data-testid='bike-overview-container'>
           {finished ? (
-            <FinishFeedback bikeImg={bike?.cardImage} />
+            <FinishFeedback bikeImg={bike?.imageUrls[0]} name={bike?.name} type={bike?.type} />
           ) : (
             <BookingOverview setFinished={setFinished} bikeId={bike?.id} />
           )}

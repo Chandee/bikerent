@@ -4,6 +4,8 @@ import DatePickerBike from 'components/DatePickerBike'
 import { useState } from 'react'
 import { PricesProps } from 'components/DatePickerBike/DatePickerBike.utils'
 import BookingOverview from './BookingOverview.component'
+import { addBooking } from './BookingOVerview.utilts'
+import dayjs from 'dayjs'
 
 interface BookingOverviewProps {
   bikeId?: number
@@ -12,7 +14,7 @@ interface BookingOverviewProps {
 
 type ValuePiece = Date | null
 
-type Value = ValuePiece | [ValuePiece, ValuePiece]
+type Value = [ValuePiece, ValuePiece]
 
 export interface AllFess {
   fee: number
@@ -21,14 +23,18 @@ export interface AllFess {
 }
 
 const BookingOverviewContainer = ({ bikeId, setFinished }: BookingOverviewProps) => {
-  const [selectedDate, setSelectedDate] = useState<Value>(null)
+  const [selectedDate, setSelectedDate] = useState<Value>([null, null])
   const [prices, setPrices] = useState<AllFess | null>(null)
+  const [error, setError] = useState<string>('')
 
   const finishBooking = () => {
-
+    addBooking({
+      bikeId: bikeId || 0,
+      dateFrom: dayjs(selectedDate[0]).format('YYYY-MM-DD'),
+      dateTo: dayjs(selectedDate[1]).format('YYYY-MM-DD'),
+    })
     setFinished(true)
   }
-
 
   return (
     <>
@@ -39,6 +45,8 @@ const BookingOverviewContainer = ({ bikeId, setFinished }: BookingOverviewProps)
         setPrices={setPrices}
         setSelectedDate={setSelectedDate}
         finishBooking={finishBooking}
+        error={error}
+        setError={setError}
       />
     </>
   )

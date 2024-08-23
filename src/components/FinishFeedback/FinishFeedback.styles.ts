@@ -30,3 +30,8 @@ export const ContainerBox = styled(Box)<BoxProps>(() => ({
   padding: '20px',
   textAlign: 'center',
 }))
+
+
+export const BikeImage = styled('img')<TypographyProps>(() => ({
+  marginTop: '40px',
+}))

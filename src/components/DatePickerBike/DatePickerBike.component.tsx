@@ -15,27 +15,34 @@ interface DatePickerBikeProps {
   value: Value
   bikeId: number
   setPrices: (value: AllFess | null) => void
+  setError: (value: string) => void
 }
 type ValuePiece = Date | null
 
-type Value = ValuePiece | [ValuePiece, ValuePiece]
+type Value = [ValuePiece, ValuePiece]
 
-const DatePickerBike = ({ setSelectedDate, value, bikeId, setPrices }: DatePickerBikeProps) => {
-  //   const [value, setValue] = useState<Value>(null)
-
+const DatePickerBike = ({
+  setSelectedDate,
+  value,
+  bikeId,
+  setPrices,
+  setError,
+}: DatePickerBikeProps) => {
   const onChange = (value: any) => {
-    console.log('value', value)
-    console.log('format', dayjs(value[0]).format('YYYY-MM-DD'))
-    console.log('format', dayjs(value[1]).format('YYYY-MM-DD'))
-
     getPrices({
       bikeId: bikeId,
       dateFrom: dayjs(value[0]).format('YYYY-MM-DD'),
       dateTo: dayjs(value[1]).format('YYYY-MM-DD'),
-    }).then((res) => {
-      setPrices(res)
-      setSelectedDate(value)
     })
+      .then((res) => {
+        setPrices(res)
+        setSelectedDate(value)
+        setError('')
+      })
+      .catch((err) => {
+        setError(err.response.data.message)
+        setPrices(null)
+      })
   }
 
   return (

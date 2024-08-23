@@ -1,19 +1,21 @@
-import { Box, Divider, Typography } from '@mui/material'
-import { BookingButton, InfoIcon, OverviewContainer, PriceRow } from './BookingOverview.styles'
+import { Alert, Box, Divider, Typography } from '@mui/material'
+import { BookingButton, CustomAlert, InfoIcon, OverviewContainer, PriceRow } from './BookingOverview.styles'
 import DatePickerBike from 'components/DatePickerBike'
 
 interface BookingOverviewProps {
   bikeId?: number
-  selectedDate: Value | null
+  selectedDate: Value
   setSelectedDate: (value: Value) => void
   prices: AllFess | null
   setPrices: (value: AllFess | null) => void
   finishBooking: () => void
+  error: string
+  setError: (value: string) => void
 }
 
 type ValuePiece = Date | null
 
-type Value = ValuePiece | [ValuePiece, ValuePiece]
+type Value = [ValuePiece, ValuePiece]
 
 export interface AllFess {
   fee: number
@@ -28,6 +30,8 @@ const BookingOverview = ({
   prices,
   setPrices,
   finishBooking,
+  error,
+  setError,
 }: BookingOverviewProps) => {
   return (
     <>
@@ -36,6 +40,7 @@ const BookingOverview = ({
         value={selectedDate}
         bikeId={bikeId || 0}
         setPrices={setPrices}
+        setError={setError}
       />
       <Typography variant='h2' fontSize={16} marginBottom={1.25}>
         Booking Overview
@@ -70,6 +75,8 @@ const BookingOverview = ({
           </PriceRow>
         </div>
       )}
+
+      {error && <CustomAlert severity='error'>{error}</CustomAlert>}
 
       <BookingButton
         fullWidth
