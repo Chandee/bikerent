@@ -92,4 +92,8 @@ import {
     justifyContent: 'space-between',
     alignItems: 'center',
   }))
+
+  export const CalendarStyle = {
+    
+  }
   

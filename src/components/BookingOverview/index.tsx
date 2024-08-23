@@ -1,3 +1,3 @@
-import BookingOverview from './BookingOverview.compoent';
+import BookingOverview from './BookingOverview.container';
 
 export default BookingOverview;

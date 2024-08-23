@@ -11,6 +11,7 @@ const BikeDetailsContainer = () => {
   const { state } = useLocation()
 
   const [currentBikeData, setCurrentBikeData] = useState<Bike>()
+  const [finished, setFinished] = useState(false)
 
   useEffect(() => {
     if (state) {
@@ -19,7 +20,7 @@ const BikeDetailsContainer = () => {
     }
   }, [])
 
-  return <BikeDetails bike={currentBikeData} />
+  return <BikeDetails bike={currentBikeData} finished={finished} setFinished={setFinished} />
 }
 
 export default BikeDetailsContainer

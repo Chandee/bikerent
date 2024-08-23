@@ -9,7 +9,7 @@ describe('BikeDetails page', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
-        <BikeDetails bike={mockedBike} />
+        <BikeDetails finished={false} setFinished={jest.fn()} bike={mockedBike} />
       </BrowserRouter>,
     )
   })

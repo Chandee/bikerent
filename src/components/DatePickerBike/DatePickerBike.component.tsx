@@ -6,16 +6,21 @@ import './DatePickerBike.css'
 
 import { useState } from 'react'
 import dayjs from 'dayjs'
+import { getPrices } from './DatePickerBike.utils'
+import { AllFess } from 'components/BookingOverview/BookingOverview.component'
+import FinishFeedback from 'components/FinishFeedback/FinishFeedback.component'
 
 interface DatePickerBikeProps {
   setSelectedDate: (value: Value) => void
   value: Value
+  bikeId: number
+  setPrices: (value: AllFess | null) => void
 }
 type ValuePiece = Date | null
 
 type Value = ValuePiece | [ValuePiece, ValuePiece]
 
-const DatePickerBike = ({ setSelectedDate, value }: DatePickerBikeProps) => {
+const DatePickerBike = ({ setSelectedDate, value, bikeId, setPrices }: DatePickerBikeProps) => {
   //   const [value, setValue] = useState<Value>(null)
 
   const onChange = (value: any) => {
@@ -23,7 +28,14 @@ const DatePickerBike = ({ setSelectedDate, value }: DatePickerBikeProps) => {
     console.log('format', dayjs(value[0]).format('YYYY-MM-DD'))
     console.log('format', dayjs(value[1]).format('YYYY-MM-DD'))
 
-    setSelectedDate(value)
+    getPrices({
+      bikeId: bikeId,
+      dateFrom: dayjs(value[0]).format('YYYY-MM-DD'),
+      dateTo: dayjs(value[1]).format('YYYY-MM-DD'),
+    }).then((res) => {
+      setPrices(res)
+      setSelectedDate(value)
+    })
   }
 
   return (

@@ -20,18 +20,22 @@ import {
   PriceRow,
 } from './BikeDetails.styles'
 import BookingOverview from 'components/BookingOverview'
+import { finished } from 'stream'
+import { useState } from 'react'
+import FinishFeedback from 'components/FinishFeedback/FinishFeedback.component'
 
 interface BikeDetailsProps {
   bike?: Bike
+  finished: boolean
+  setFinished: (value: boolean) => void
 }
 
-const BikeDetails = ({ bike }: BikeDetailsProps) => {
+const BikeDetails = ({ bike, finished, setFinished }: BikeDetailsProps) => {
   const rateByDay = bike?.rate || 0
   const rateByWeek = rateByDay * 7
 
   const servicesFee = getServicesFee(rateByDay)
   const total = rateByDay + servicesFee
-
   return (
     <div data-testid='bike-details-page'>
       <Header />
@@ -112,7 +116,11 @@ const BikeDetails = ({ bike }: BikeDetailsProps) => {
         </DetailsContainer>
 
         <OverviewContainer variant='outlined' data-testid='bike-overview-container'>
-          <BookingOverview rateByDay={rateByDay} total={total} servicesFee={servicesFee} />
+          {finished ? (
+            <FinishFeedback bikeImg={bike?.cardImage} />
+          ) : (
+            <BookingOverview setFinished={setFinished} bikeId={bike?.id} />
+          )}
         </OverviewContainer>
       </Content>
     </div>
