@@ -7,7 +7,7 @@ interface FinishFeedbackProps {
   name: string | undefined
   type: string | undefined
   backHome: () => void
-  haveBorder?: boolean
+  haveborder?: string
 }
 
 const FinishFeedback = ({
@@ -15,10 +15,10 @@ const FinishFeedback = ({
   name,
   type,
   backHome,
-  haveBorder = true,
+  haveborder = '',
 }: FinishFeedbackProps) => {
   return (
-    <ContainerBox haveBorder={haveBorder}>
+    <ContainerBox haveborder={haveborder} data-testid='finish-feedback'>
       <TitleTypo variant='h5'>Thank you!</TitleTypo>
       <Typography variant='body1'>Your bike is booked.</Typography>
 

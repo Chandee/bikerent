@@ -40,11 +40,11 @@ const ModalDatePicker = ({
 }: ModalDatePickerProps) => {
   return (
     <>
-      <ContainerBox data-testid='bike-background-booking'>
+      <ContainerBox data-testid='bike-background-date-picker'>
         <BoxContainerHeader onClick={() => setOpenCalendar(true)}>
           <CalendarIcon />
 
-          <Typography fontSize={16} data-testid='bike-name-details'>
+          <Typography fontSize={16} data-testid='bike-name-details-modal'>
             From {valueDate[0] ? dayjs(valueDate[0]).format('MMM/DD') : '__'} to{' '}
             {valueDate[1] ? dayjs(valueDate[1]).format('MMM/DD') : '__'}
           </Typography>
@@ -58,13 +58,13 @@ const ModalDatePicker = ({
             <Divider />
 
             <div>
-              <PriceRow marginTop={1.75} data-testid='bike-overview-single-price'>
+              <PriceRow marginTop={1.75} data-testid='bike-overview-single-subtotal'>
                 <Box display='flex' alignItems='center'>
                   <Typography marginRight={1}>Subtotal</Typography>
                   <InfoIcon fontSize='small' />
                 </Box>
 
-                <Typography>{prices.rentAmount.toFixed(2)} €</Typography>
+                <Typography>{prices.rentAmount?.toFixed(2)} €</Typography>
               </PriceRow>
               <PriceRow marginTop={1.5} data-testid='bike-overview-single-price'>
                 <Box display='flex' alignItems='center'>
@@ -72,14 +72,14 @@ const ModalDatePicker = ({
                   <InfoIcon fontSize='small' />
                 </Box>
 
-                <Typography>{prices.fee.toFixed(2)} €</Typography>
+                <Typography>{prices.fee?.toFixed(2)} €</Typography>
               </PriceRow>
               <PriceRow marginTop={1.75} data-testid='bike-overview-total'>
                 <Typography fontWeight={800} fontSize={16}>
                   Total
                 </Typography>
                 <Typography variant='h2' fontSize={24} letterSpacing={1}>
-                  {prices.totalAmount.toFixed(2)} €
+                  {prices.totalAmount?.toFixed(2)} €
                 </Typography>
               </PriceRow>
             </div>
@@ -89,7 +89,7 @@ const ModalDatePicker = ({
         {openCalendar && (
           <ModalContainerDate>
             <Box>
-              <LikeButton onClick={() => setOpenCalendar(false)}>
+              <LikeButton onClick={() => setOpenCalendar(false)} data-testid="back-button-date">
                 <ArrowLeft />
               </LikeButton>
               <DatePickerBike
@@ -106,7 +106,7 @@ const ModalDatePicker = ({
               disabled={!valueDate[0]}
               variant='contained'
               data-testid='bike-booking-button'
-              onClick={() => requestBikePrice()}
+              onClick={requestBikePrice}
             >
               Select
             </ButtonMobile>

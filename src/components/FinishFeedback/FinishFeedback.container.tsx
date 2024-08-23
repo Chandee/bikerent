@@ -6,10 +6,10 @@ interface BikeCardProps {
   bikeImg: string | undefined
   name: string | undefined
   type: string | undefined
-  haveBorder?: boolean
+  haveborder?: string
 }
 
-const FinishFeedbackContainer = ({ bikeImg, name, type, haveBorder }: BikeCardProps) => {
+const FinishFeedbackContainer = ({ bikeImg, name, type, haveborder }: BikeCardProps) => {
   const navigate = useNavigate()
 
   const backHome = () => {
@@ -22,7 +22,7 @@ const FinishFeedbackContainer = ({ bikeImg, name, type, haveBorder }: BikeCardPr
       name={name}
       type={type}
       backHome={backHome}
-      haveBorder={haveBorder}
+      haveborder={haveborder}
     />
   )
 }

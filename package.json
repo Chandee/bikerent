@@ -64,11 +64,10 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1"
   },
-   "type": "module",
-   "jest": {
+  "type": "module",
+  "jest": {
     "moduleNameMapper": {
       "^axios$": "axios/dist/node/axios.cjs"
     }
   }
-  
 }

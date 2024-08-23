@@ -33,7 +33,6 @@ const BikeDetails = ({ bike, finished, setFinished }: BikeDetailsProps) => {
   return (
     <div data-testid='bike-details-page'>
       <Header />
-      <>{console.log('bikee', bike)}</>
       <BreadcrumbContainer data-testid='bike-details-breadcrumbs'>
         <Breadcrumbs separator={<BreadcrumbSeparator />}>
           <Link underline='hover' display='flex' alignItems='center' color='white' href='/'>
@@ -111,12 +110,7 @@ const BikeDetails = ({ bike, finished, setFinished }: BikeDetailsProps) => {
 
         <OverviewContainer variant='outlined' data-testid='bike-overview-container'>
           {finished ? (
-            <FinishFeedback
-              bikeImg={bike?.imageUrls[0]}
-              name={bike?.name}
-              type={bike?.type}
-              haveBorder={false}
-            />
+            <FinishFeedback bikeImg={bike?.imageUrls[0]} name={bike?.name} type={bike?.type} />
           ) : (
             <BookingOverview setFinished={setFinished} bikeId={bike?.id} />
           )}

@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 
 interface CustomProps extends BoxProps {
-  haveBorder: boolean
+  haveborder: string
 }
 
 export const FinishButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -29,11 +29,11 @@ export const TitleTypo = styled(Typography)<TypographyProps>(() => ({
   marginBottom: '20px',
 }))
 
-export const ContainerBox = styled(Box)<CustomProps>(({ theme, haveBorder }) => ({
+export const ContainerBox = styled(Box)<CustomProps>(({ theme, haveborder }) => ({
   maxWidth: '400px',
   padding: '20px',
   textAlign: 'center',
-  border: haveBorder ? `1px solid ${theme.palette.grey[500]}` : 'none',
+  border: haveborder ? `1px solid ${theme.palette.grey[500]}` : 'none',
   borderRadius: 20,
   background: 'white',
   margin: 'auto'

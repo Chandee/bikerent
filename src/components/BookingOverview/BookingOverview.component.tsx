@@ -61,7 +61,7 @@ const BookingOverview = ({
       <Divider />
       {prices && (
         <div>
-          <PriceRow marginTop={1.75} data-testid='bike-overview-single-price'>
+          <PriceRow marginTop={1.75} data-testid='bike-overview-single-subprice'>
             <Box display='flex' alignItems='center'>
               <Typography marginRight={1}>Subtotal</Typography>
               <InfoIcon fontSize='small' />

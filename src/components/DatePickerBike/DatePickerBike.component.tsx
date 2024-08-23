@@ -25,7 +25,6 @@ const DatePickerBike = ({
   setError,
   apiOnChange = true,
 }: DatePickerBikeProps) => {
-  
   const onChange = (value: any) => {
     if (apiOnChange && setPrices && setError) {
       getPrices({
@@ -49,7 +48,14 @@ const DatePickerBike = ({
 
   return (
     <>
-      <Calendar minDate={new Date()} selectRange={true} onChange={onChange} value={value} />
+      <Calendar
+        minDate={new Date()}
+        selectRange={true}
+        onChange={onChange}
+        value={value}
+        data-testid='calendar-range'
+        
+      />
     </>
   )
 }

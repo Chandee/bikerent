@@ -61,7 +61,7 @@ const ModalBooking = ({
                   variant='h1'
                   fontSize={38}
                   fontWeight={800}
-                  data-testid='bike-name-details'
+                  data-testid='bike-name-details-booking'
                 >
                   Booking
                 </Typography>
@@ -98,8 +98,10 @@ const ModalBooking = ({
                 fullWidth
                 variant='contained'
                 disabled={!prices}
-                data-testid='bike-booking-button'
-                onClick={sendBooking}
+                data-testid='bike-booking-finish-button'
+                onClick={() => {
+                  sendBooking()
+                }}
               >
                 Add to booking
               </ButtonAction>
@@ -109,6 +111,7 @@ const ModalBooking = ({
                     bikeImg={bike?.imageUrls[0]}
                     name={bike?.name}
                     type={bike?.type}
+                    haveborder='yes'
                   />
                 </ContainerFinishFeedback>
               )}
