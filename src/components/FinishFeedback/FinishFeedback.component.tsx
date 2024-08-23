@@ -7,11 +7,18 @@ interface FinishFeedbackProps {
   name: string | undefined
   type: string | undefined
   backHome: () => void
+  haveBorder?: boolean
 }
 
-const FinishFeedback = ({ bikeImg, name, type, backHome }: FinishFeedbackProps) => {
+const FinishFeedback = ({
+  bikeImg,
+  name,
+  type,
+  backHome,
+  haveBorder = true,
+}: FinishFeedbackProps) => {
   return (
-    <ContainerBox>
+    <ContainerBox haveBorder={haveBorder}>
       <TitleTypo variant='h5'>Thank you!</TitleTypo>
       <Typography variant='body1'>Your bike is booked.</Typography>
 

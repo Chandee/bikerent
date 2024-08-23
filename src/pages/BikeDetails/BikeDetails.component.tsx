@@ -118,12 +118,17 @@ const BikeDetails = ({ bike, finished, setFinished }: BikeDetailsProps) => {
 
         <OverviewContainer variant='outlined' data-testid='bike-overview-container'>
           {finished ? (
-            <FinishFeedback bikeImg={bike?.imageUrls[0]} name={bike?.name} type={bike?.type} />
+            <FinishFeedback
+              bikeImg={bike?.imageUrls[0]}
+              name={bike?.name}
+              type={bike?.type}
+              haveBorder={false}
+            />
           ) : (
             <BookingOverview setFinished={setFinished} bikeId={bike?.id} />
           )}
         </OverviewContainer>
-        <ModalBooking bike={bike}/>
+        <ModalBooking bike={bike} />
       </Content>
     </div>
   )

@@ -63,6 +63,7 @@ export const LikeButton = styled(IconButton)<IconButtonProps>(({ theme }) => ({
   borderRadius: 20,
   width: 60,
   height: 60,
+  marginBottom: '24px'
 }))
 
 export const FavoriteIcon = styled(FavoriteBorderOutlined)(({ theme }) => ({

@@ -12,15 +12,15 @@ import FinishFeedback from 'components/FinishFeedback/FinishFeedback.component'
 
 interface DatePickerBikeProps {
   setSelectedDate: (value: Value) => void
-  value: Value
-  bikeId: number
-  setPrices: (value: AllFess | null) => void
-  setError: (value: string) => void
+  value: Value | null
+  bikeId?: number
+  setPrices?: (value: AllFess | null) => void
+  setError?: (value: string) => void
   apiOnChange?: boolean
 }
 type ValuePiece = Date | null
 
-type Value = [ValuePiece, ValuePiece]
+export type Value = [ValuePiece, ValuePiece]
 
 const DatePickerBike = ({
   setSelectedDate,
@@ -31,9 +31,9 @@ const DatePickerBike = ({
   apiOnChange = true,
 }: DatePickerBikeProps) => {
   const onChange = (value: any) => {
-    if (apiOnChange) {
+    if (apiOnChange && setPrices && setError) {
       getPrices({
-        bikeId: bikeId,
+        bikeId: bikeId || 0,
         dateFrom: dayjs(value[0]).format('YYYY-MM-DD'),
         dateTo: dayjs(value[1]).format('YYYY-MM-DD'),
       })

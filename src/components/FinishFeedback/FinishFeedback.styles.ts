@@ -8,6 +8,10 @@ import {
   TypographyProps,
 } from '@mui/material'
 
+interface CustomProps extends BoxProps {
+  haveBorder: boolean
+}
+
 export const FinishButton = styled(Button)<ButtonProps>(({ theme }) => ({
   borderRadius: 20,
   padding: '18px 0',
@@ -25,12 +29,15 @@ export const TitleTypo = styled(Typography)<TypographyProps>(() => ({
   marginBottom: '20px',
 }))
 
-export const ContainerBox = styled(Box)<BoxProps>(() => ({
+export const ContainerBox = styled(Box)<CustomProps>(({ theme, haveBorder }) => ({
   maxWidth: '400px',
   padding: '20px',
   textAlign: 'center',
+  border: haveBorder ? `1px solid ${theme.palette.grey[500]}` : 'none',
+  borderRadius: 20,
+  background: 'white',
+  margin: 'auto'
 }))
-
 
 export const BikeImage = styled('img')<TypographyProps>(() => ({
   marginTop: '40px',

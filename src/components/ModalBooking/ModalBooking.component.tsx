@@ -1,4 +1,4 @@
-import { Divider, IconButton, Typography } from '@mui/material'
+import { Box, Divider, IconButton, Typography } from '@mui/material'
 import BikeType from 'components/BikeType'
 import BikePlaceholder from 'assets/bike-placeholder.png'
 import Bike from 'models/Bike'
@@ -17,64 +17,104 @@ import {
   FinishButton,
   ContainerBikeData,
   PriceTypo,
+  ButtonAction,
+  ContainerFinishFeedback,
 } from './ModalBooking.styles'
-
-type JustDisplayedBikeData = Omit<Bike, 'candidateId' | 'maxLoad' | 'ratings'>
-
-interface BikeCardComponentProps extends JustDisplayedBikeData {
-  isImageLoaded: boolean
-  cardImage: string
-  handleOpenBikeDetails: () => void
-  handleIsImageLoaded: (isLoading: boolean) => void
+import ModalDatePicker from 'components/ModalDatePicker'
+import FinishFeedback from 'components/FinishFeedback'
+import { AllFess } from 'components/BookingOverview/BookingOverview.component'
+import { Value } from 'components/DatePickerBike/DatePickerBike.component'
+interface ModalBooking {
+  open: boolean
+  setOpen: (value: boolean) => void
+  bike?: Bike
+  setPrices: (value: AllFess | null) => void
+  prices: AllFess | null
+  selectedDate: Value
+  setSelectedDate: (value: Value) => void
+  sendBooking: () => void
+  finished: boolean
+  backHome: () => void
 }
 
-const ModalBooking = ({ open, setOpen, bike }: any) => {
+const ModalBooking = ({
+  open,
+  setOpen,
+  bike,
+  setPrices,
+  prices,
+  selectedDate,
+  setSelectedDate,
+  sendBooking,
+  finished,
+  backHome,
+}: ModalBooking) => {
   return (
     <>
       {open ? (
         <ContainerBackground data-testid='bike-background-booking'>
           <Container data-testid='bike-booking'>
-            <BoxContainerHeader>
-              <LikeButton>
-                <ArrowLeft />
-              </LikeButton>
-              <Typography
-                variant='h1'
-                fontSize={38}
-                fontWeight={800}
-                data-testid='bike-name-details'
-              >
-                Booking
-              </Typography>
-            </BoxContainerHeader>
-            <ContainerBox>
-              <BikeImage
-                src={bike?.imageUrls[0]}
-                width='100%'
-                alt='Bike Image'
-                data-testid='bike-image'
+            <Box>
+              <BoxContainerHeader>
+                <LikeButton onClick={backHome}>
+                  <ArrowLeft />
+                </LikeButton>
+                <Typography
+                  variant='h1'
+                  fontSize={38}
+                  fontWeight={800}
+                  data-testid='bike-name-details'
+                >
+                  Booking
+                </Typography>
+              </BoxContainerHeader>
+              <ContainerBox>
+                <BikeImage
+                  src={bike?.imageUrls[0]}
+                  width='100%'
+                  alt='Bike Image'
+                  data-testid='bike-image'
+                />
+                <ContainerBikeData>
+                  <NameBox>
+                    <Typography fontWeight={'bold'} variant='h6'>
+                      {bike?.name}
+                    </Typography>
+                    <BikeType type={bike?.type} />
+                    <PriceTypo variant='body1'>
+                      <span style={{ fontWeight: 'bold' }}>{bike?.rate}€/ </span> day{' '}
+                    </PriceTypo>
+                  </NameBox>
+                </ContainerBikeData>
+              </ContainerBox>
+              <ModalDatePicker
+                bike={bike}
+                setPrices={setPrices}
+                prices={prices}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
               />
-              <ContainerBikeData>
-                <NameBox>
-                  <Typography fontWeight={'bold'} variant='h6'>{bike?.name}</Typography>
-                  <BikeType type={bike?.type} />
-                  <PriceTypo variant='body1'>
-                    <span style={{ fontWeight: 'bold' }}>{bike?.rate}€/ </span> day{' '}
-                  </PriceTypo>
-                </NameBox>
-              </ContainerBikeData>
-              
-
-              {/* <FinishButton
+            </Box>
+            <Box>
+              <ButtonAction
                 fullWidth
-                disableElevation
                 variant='contained'
+                disabled={!prices}
                 data-testid='bike-booking-button'
-                onClick={() => {console.log("s")}}
+                onClick={sendBooking}
               >
-                Go to Home Page
-              </FinishButton> */}
-            </ContainerBox>
+                Add to booking
+              </ButtonAction>
+              {finished && (
+                <ContainerFinishFeedback>
+                  <FinishFeedback
+                    bikeImg={bike?.imageUrls[0]}
+                    name={bike?.name}
+                    type={bike?.type}
+                  />
+                </ContainerFinishFeedback>
+              )}
+            </Box>
           </Container>
         </ContainerBackground>
       ) : (
