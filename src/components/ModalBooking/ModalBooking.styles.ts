@@ -66,6 +66,7 @@ export const BoxFooterMobile = styled(Box)<BoxProps>(({ theme }) => ({
   position: 'fixed',
   width: '100%',
   bottom: 0,
+  right: 0,
   color: theme.palette.common.black,
   background: theme.palette.primary.main,
   [theme.breakpoints.up('lg')]: {
